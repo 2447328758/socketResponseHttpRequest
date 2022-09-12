@@ -60,6 +60,7 @@ public class FileTransfer implements Runnable{
                 System.out.println(file.getAbsoluteFile()+"\tlen:"+data.length);
                 writer.flush();
                 os.write(data);
+                os.flush();// 把所有的数据都推送出去
                 System.out.println("发送完成！");
             }catch (IOException ex){
                 System.out.println(ex.getMessage());
