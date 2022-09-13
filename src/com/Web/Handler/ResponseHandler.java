@@ -23,7 +23,7 @@ public class ResponseHandler {
         os.write(response.getContent());
         os.flush();
         writer.write("\r\n");
-
+        writer.flush();
 
     }
 }
