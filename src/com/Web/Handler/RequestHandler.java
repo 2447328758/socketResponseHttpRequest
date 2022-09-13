@@ -2,6 +2,7 @@ package com.Web.Handler;
 
 import com.Web.Content.Request;
 import com.Web.Content.Response;
+import com.Web.Controller.ThreadController;
 import com.Web.Server;
 import com.Util.Debug;
 import jdk.jfr.Description;
@@ -18,6 +19,7 @@ import java.net.URLDecoder;
  * @description 处理各种请求
  * */
 public class RequestHandler implements Runnable{
+    private static  String index;
     private ServerSocket serverSocket;
     public RequestHandler(ServerSocket server){
         if(server!=null)
@@ -28,17 +30,20 @@ public class RequestHandler implements Runnable{
 
     @Override
     public void run() {
-        synchronized (serverSocket){
-            try {
-                Debug.log(this+"线程开始！");
-                Socket socket = serverSocket.accept();
-                Debug.log(socket.getInetAddress()+"连接成功！");
-                Request request = new Request(socket);
-                Response response = this.excute(request);
-                new ResponseHandler().send(socket,response);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            Debug.log(this+"线程开始！");
+            Socket socket = serverSocket.accept();
+            Debug.log(socket.getInetAddress()+"连接成功！");
+            Request request = new Request(socket);
+            Response response = this.excute(request);
+            new ResponseHandler().send(socket,response);
+            Thread thread =Thread.currentThread();
+            if (ThreadController.CreateController().contains(thread)){
+                ThreadController.CreateController().remove(thread);
+            }else
+                Debug.log(thread + " is not contained!");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -78,11 +83,20 @@ public class RequestHandler implements Runnable{
         for (String f : file.list()){
             links=links.concat(template.formatted(currentRequestDir.concat("/"+f),f));
         }
-        FileInputStream fis = new FileInputStream("resources/index.html");
-        String index = new String(fis.readAllBytes(),"utf-8").replace("{{links}}",links)
-                .replace("{{lastdir}}",lastDir);
-        fis.close();
+        /**
+         *
+         * 大大提高了响应速度
+         *
+         * */
+        if (index==null){
+            FileInputStream fis = new FileInputStream("resources/index.html");
+            index=new String(fis.readAllBytes(),"utf-8");
+            fis.close();
+        }
+
+        String page = index.replace("{{links}}",links).replace("{{lastdir}}",lastDir);
+
         //Debug.console(index);
-        return index.getBytes("utf-8");
+        return page.getBytes("utf-8");
     }
 }
