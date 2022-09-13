@@ -19,6 +19,12 @@ FileTransfer is an experiment for my test to create a tool to transport files th
   
   <request_method> <request_path> <http_protocol_version>\r\n
   
+  /**
+  
+  the key-values tells server how to response the request.
+  
+  */
+  
   [key:value]\r\n
   
   [key:value]\r\n
@@ -29,16 +35,18 @@ FileTransfer is an experiment for my test to create a tool to transport files th
   
   [request body]
   
-  /**
-  
-  the key-values tells server how to response the request.
-  
-  */
+  \r\n  *//this marks the end of the request body*
   
 - Response
   The format of response is as follows:
   
   <http_protocol_version> <status_code> <status_message>
+  
+   /**
+  
+  the key-values tells broswer how to handler the response.
+  
+  */
   
   [key:value]\r\n
   
@@ -46,9 +54,11 @@ FileTransfer is an experiment for my test to create a tool to transport files th
   
   ...
   
-  \r\n *//this is a mark for broswer to identify the request header and the request body*
+  \r\n *//this is a mark for broswer to identify the response header and the response body*
   
   [response body]It can be binary data;
+  
+  \r\n *//this marks the end of the response body*
   
 ## The use of the file transfer
 
