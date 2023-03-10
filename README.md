@@ -68,9 +68,9 @@ All the functions are based on the com.FileTransfer.
 
 - Directory setting
 
-  Make sure that the ***resources/index.html*** the project supply is under the working directory. Because it is a template for all html page you will see.
+  Make sure that the ***resources/index.html*** the project supplied is under the working directory. Because it is a template for all html page you will see.
 
-  Make sure that a direcoty name ***log*** is under the working directory. Because it the log.txt where is created.
+  Make sure that a direcoty name ***log*** is under the working directory. Because it is where the log.txt is created.
 
 - Create a server with ip, port and the file path to transfer like this:
 
