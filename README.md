@@ -6,7 +6,7 @@ This is a small App for simple data transport through LAN. The server is use soc
 I'm just a college student form China with poor English and poor coding skills.I create the small app for fun and during my coding, I refered many others' codes and struggled to find articles
 about HTTP beacause the articles I searched online more likely to talk about some packaged http tools like Spring. But I just want to learn about how http datas are trasported in socket.
 
-The porject is not only done just with me but also who writes the code I refered and writes the blogs I read. And I'm thankful to all of them.
+The porject is not only done just by me but also who writes the code I refered and writes the blogs I read. And I'm thankful to all of them.
 
 ***Last but not least, I'm realy expected to recieve advices about
 wheather my English writing or the code skills. Also, I beg your understanding and forgiveness for my some umcomfortable but not indended expressions in the passage for it's my
