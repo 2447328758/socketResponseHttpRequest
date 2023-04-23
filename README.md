@@ -13,7 +13,7 @@ wheather my English writing or the code skills. Also, I beg your understanding a
 first time to post online in English.***
 
 ## com.FileTransfer
-FileTransfer is an experiment for my test to create a tool to transport files throw LAN with Http protocol.It shows how http works.
+FileTransfer is an experiment for my trial to create a tool to transport files throw LAN with Http protocol.It shows how http works.
 - Request 
   The format of request is as follows:
   
